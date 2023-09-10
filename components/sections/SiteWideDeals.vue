@@ -51,8 +51,13 @@ export default {
     @apply flex w-full;
 
     li {
-      @apply w-full;
-      @apply flex items-center justify-center;
+      @apply w-[75%];
+      @apply flex items-center;
+
+      &:last-of-type {
+        @apply w-full;
+        @apply justify-end;
+      }
 
       a {
         @apply flex items-center justify-center flex-col;
