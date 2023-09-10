@@ -15,12 +15,16 @@
     <section>
       <VipExclusive/>
     </section>
+
+    <section>
+      <Trending/>
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .test {
   @apply relative;
-  margin-top: 93px;
+  @apply mt-[93px];
 }
 </style>

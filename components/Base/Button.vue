@@ -25,5 +25,11 @@ export default {
     @apply bg-black;
     @apply text-white;
   }
+
+  &.btn__trending {
+    @apply px-[20px] py-[10px];
+    @apply rounded-full border-[1px] border-solid border-black;
+    @apply text-[14px] font-semibold text-black capitalize;
+  }
 }
 </style>
