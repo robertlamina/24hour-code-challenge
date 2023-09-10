@@ -19,6 +19,10 @@
     <section>
       <Trending/>
     </section>
+
+    <section>
+      <NewIn/>
+    </section>
   </div>
 </template>
 

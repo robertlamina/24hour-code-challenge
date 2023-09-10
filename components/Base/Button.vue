@@ -17,7 +17,7 @@ export default {
 
 <style scoped lang="scss">
 .button {
-  @apply bg-white;
+  @apply bg-white w-max;
   @apply px-[20px] py-[10px];
   @apply text-[17px] font-semibold text-black uppercase;
 
