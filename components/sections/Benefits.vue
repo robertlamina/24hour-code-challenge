@@ -1,34 +1,10 @@
 <template>
   <div class="benefits">
 		<ul>
-      <li>
+      <li v-for="item in items">
         <a href="#">
-          <Icon name="bx:bx-crown" color="black" size="30px"/>
-          <span>Exclusive Deals for VIP 2 and up!</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon name="bx:bx-star" color="black" size="30px"/>
-          <span>Weekly New Arrivals</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon name="mdi:truck-delivery-outline" color="black" size="30px"/>
-          <span>Free Shipping On Orders Over $100</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon name="bx:bx-map-pin" color="black" size="30px"/>
-          <span>Track Your Order</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon name="bx:bx-purchase-tag" color="black" size="30px"/>
-          <span>10% Off On Your First Order!</span>
+          <Icon :name="item.icon" color="black" size="30px"/>
+          <span>{{ item.name }}</span>
         </a>
       </li>
     </ul>
@@ -36,7 +12,34 @@
 </template>
 
 <script lang="ts">
-
+export default {
+  data() {
+    return {
+      items: [
+        {
+          icon: 'bx:bx-crown',
+          name: 'Exclusive Deals for VIP 2 and up!'
+        },
+        {
+          icon: 'bx:bx-star',
+          name: 'Weekly New Arrivals'
+        },
+        {
+          icon: 'mdi:truck-delivery-outline',
+          name: 'Free Shipping On Orders Over $100'
+        },
+        {
+          icon: 'bx:bx-map-pin',
+          name: 'Track Your Order'
+        },
+        {
+          icon: 'bx:bx-purchase-tag',
+          name: '10% Off On Your First Order!'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

@@ -2,17 +2,8 @@
   <div class="main__nav">
     <div class="nav__left">
       <ul>
-        <li>
-          <a class="active" href="#">Women</a>
-        </li>
-        <li>
-          <a href="#">Plus</a>
-        </li>
-        <li>
-          <a href="#">Men</a>
-        </li>
-        <li>
-          <a href="#">Accessories</a>
+        <li v-for="item in items">
+          <a :class="item.status" href="#">{{ item.name }}</a>
         </li>
       </ul>
     </div>
@@ -23,29 +14,9 @@
     </div>
     <div class="nav__right">
       <ul>
-        <li>
+        <li v-for="icon in icons">
           <a href="#">
-            <Icon name="bx:bx-user" color="#999999" size="20px"/>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Icon name="bx:bx-shopping-bag" color="#999999" size="20px"/>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Icon name="bx:bx-heart" color="#999999" size="20px"/>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Icon name="bx:bx-support" color="#999999" size="20px"/>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Icon name="bx:bx-search" color="#999999" size="20px"/>
+            <Icon :name="icon" color="#999999" size="20px"/>
           </a>
         </li>
         <li>
@@ -59,6 +30,40 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      items: [
+        {
+          status: 'active',
+          name: 'Women'
+        },
+          {
+          status: 'in-active',
+          name: 'Plus'
+        },
+          {
+          status: 'in-active',
+          name: 'Men'
+        },
+          {
+          status: 'in-active',
+          name: 'Accessories'
+        }
+      ],
+      icons: [
+        'bx:bx-user',
+        'bx:bx-shopping-bag',
+        'bx:bx-heart',
+        'bx:bx-support',
+        'bx:bx-search'
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .main__nav {
@@ -112,6 +117,7 @@
 
           span {
             @apply mr-[11px];
+            @apply uppercase;
           }
         }
       }
