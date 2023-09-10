@@ -1,5 +1,5 @@
 <template>
-<Splide :options="{ rewind: true }">
+<Splide :options="{ rewind: true, autoplay: true }">
   <SplideSlide>
     <img src="~/assets/images/hero-img-1.jpg" alt="Sample 1">
   </SplideSlide>

@@ -23,6 +23,10 @@
     <section>
       <NewIn/>
     </section>
+
+    <section>
+      <RecentlyBought/>
+    </section>
   </div>
 </template>
 

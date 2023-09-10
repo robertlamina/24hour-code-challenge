@@ -31,5 +31,11 @@ export default {
     @apply rounded-full border-[1px] border-solid border-black;
     @apply text-[14px] font-semibold text-black capitalize;
   }
+
+  &.btn__buy {
+    @apply px-[10px] py-[5px];
+    @apply rounded-full border-[1px] border-solid border-black;
+    @apply text-[14px] font-semibold text-black uppercase;
+  }
 }
 </style>
