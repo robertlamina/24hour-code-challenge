@@ -43,7 +43,7 @@ export default {
 
 <style scoped lang="scss">
 .site__wide__deals {
-  @apply w-full;
+  @apply w-full bg-white;
   @apply px-[68px] py-[45px];
   @apply flex items-center justify-center;
 
