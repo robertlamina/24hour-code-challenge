@@ -3,13 +3,6 @@
     <MainNav/>
   </div>
 </template>
-<script lang="ts">
-import MainNav from '~/components/includes/partials/MainNav.vue'
-
-export default {
-	components: {MainNav}
-}
-</script>
 
 <style scoped lang="scss">
 .nav {

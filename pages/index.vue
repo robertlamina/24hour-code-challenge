@@ -21,6 +21,3 @@
   margin-top: 93px;
 }
 </style>
-<script setup lang="ts">
-import Hero from "~/components/sections/Hero.vue";
-</script>

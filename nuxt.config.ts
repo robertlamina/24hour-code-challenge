@@ -1,12 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  components: {
-    dirs: [
-      '~/components/includes',
-      '~/components/sections'
-    ]
-  },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false
+    }
+  ],
   css: [
     '~/assets/css/normalize.css',
     '~/assets/css/main.scss'
