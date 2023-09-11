@@ -5,7 +5,7 @@
     </div>
     <div class="newsletter__right">
       <div class="input__group">
-        <input>
+        <input placeholder="Your Email Address">
         <Button variant="btn__icon">
           <Icon name="ant-design:right-outlined" color="black" size="9px"/>
         </Button>

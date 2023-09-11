@@ -15,8 +15,9 @@
     <div class="nav__right">
       <ul>
         <li v-for="icon in icons">
-          <a href="#">
-            <Icon :name="icon" color="#999999" size="20px"/>
+          <a href="#" @click="toggleCart(icon)">
+            <Icon :name="icon.icon" color="#999999" size="20px"/>
+            <CartWidget :is-visible="isVisible" v-if="icon.name === 'bag'"/>
           </a>
         </li>
         <li>
@@ -32,37 +33,60 @@
 </template>
 
 <script lang="ts">
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
   data() {
     return {
+      isVisible: false,
       items: [
         {
           status: 'active',
           name: 'Women'
         },
-          {
+        {
           status: 'in-active',
           name: 'Plus'
         },
-          {
+        {
           status: 'in-active',
           name: 'Men'
         },
-          {
+        {
           status: 'in-active',
           name: 'Accessories'
         }
       ],
       icons: [
-        'bx:bx-user',
-        'bx:bx-shopping-bag',
-        'bx:bx-heart',
-        'bx:bx-support',
-        'bx:bx-search'
+        {
+          name: 'user',
+          icon: 'bx:bx-user'
+        },
+        {
+          name: 'bag',
+          icon: 'bx:bx-shopping-bag'
+        },
+        {
+          name: 'heart',
+          icon: 'bx:bx-heart'
+        },
+        {
+          name: 'support',
+          icon: 'bx:bx-support'
+        },
+        {
+          name: 'search',
+          icon: 'bx:bx-search'
+        }
       ]
     }
+  },
+  methods: {
+    toggleCart(icon: { name: string; icon: string }) {
+      if (icon.name === 'bag') this.isVisible = !this.isVisible
+    }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
@@ -96,7 +120,7 @@ export default {
   }
 
   .nav__right {
-    @apply w-full;
+    @apply w-full relative;
     @apply flex justify-end;
 
     ul {
@@ -104,6 +128,10 @@ export default {
 
       li {
         @apply p-[10px];
+
+        a {
+          @apply relative;
+        }
 
         .currency {
           @apply cursor-pointer;
