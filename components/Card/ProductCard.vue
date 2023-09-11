@@ -1,6 +1,6 @@
 <template>
   <div class="product__card">
-    <img :src="`/images/trending/trending-img-1.jpg`" alt="trending-img-1">
+    <img :src="`/images/products/${product.image}`" alt="product-img">
     <h1>{{ product.name }}</h1>
     <div class="product__info">
       <span class="product__amount">${{ product.price }}</span>
