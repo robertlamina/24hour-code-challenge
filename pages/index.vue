@@ -27,6 +27,10 @@
     <section>
       <RecentlyBought/>
     </section>
+
+    <section>
+      <Insta/>
+    </section>
   </div>
 </template>
 
