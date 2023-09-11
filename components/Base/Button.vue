@@ -37,5 +37,11 @@ export default {
     @apply rounded-full border-[1px] border-solid border-black;
     @apply text-[14px] font-semibold text-black uppercase;
   }
+
+  &.btn__icon {
+    @apply w-[35px] h-full;
+    @apply p-0;
+    @apply flex items-center justify-center;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="test">
+  <div class="main">
     <section>
 			<Benefits/>
     </section>
@@ -31,11 +31,15 @@
     <section>
       <Insta/>
     </section>
+
+    <section>
+      <Newsletter/>
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.test {
+.main {
   @apply relative;
   @apply mt-[93px];
 }
