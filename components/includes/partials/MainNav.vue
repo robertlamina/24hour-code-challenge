@@ -15,7 +15,7 @@
     <div class="nav__right">
       <ul>
         <li v-for="icon in icons">
-          <a href="#" @click="toggleCart(icon)">
+          <a href="#" @click.prevent="toggleCart(icon)">
             <Icon :name="icon.icon" color="#999999" size="20px"/>
             <CartWidget :is-visible="isVisible" v-if="icon.name === 'bag'"/>
           </a>
@@ -34,6 +34,11 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+
+interface Icon {
+  name: string,
+  icon: string
+}
 
 export default defineComponent({
   data() {
@@ -82,7 +87,7 @@ export default defineComponent({
     }
   },
   methods: {
-    toggleCart(icon: { name: string; icon: string }) {
+    toggleCart(icon: Icon) {
       if (icon.name === 'bag') this.isVisible = !this.isVisible
     }
   }

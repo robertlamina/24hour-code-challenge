@@ -6,18 +6,70 @@
       <span class="product__amount">${{ product.price }}</span>
       <span class="product__discounted">{{ product.original_price ? `$${product.original_price}` : '' }}</span>
       <div class="btn__buy">
-        <Button variant="btn__buy">Add</Button>
+        <Button variant="btn__buy" @click="addToCart(product)">Add</Button>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  props: {
-    product: Object
-  }
+import {defineComponent} from 'vue'
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
+interface ProductProps {
+  id: string,
+  name: string,
+  quantity: number,
+  size: string,
+  color: string,
+  price: number,
+  original_price: number,
+  image: string
 }
+
+export default defineComponent({
+  props: {
+    product: Object as PropType<ProductProps>
+  },
+  data() {
+    return {
+    	quantity: 1
+    }
+  },
+  methods: {
+    addToCart(product: ProductProps) {
+      let cartItems = localStorage.hasOwnProperty('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+
+      try {
+        if (this.$_.some(cartItems, {id: product.id})) {
+          product.quantity = this.$_.find(cartItems, {id: product.id}).quantity + 1
+
+          this.$_.set(this.$_.find(cartItems, {id: product.id}), 'quantity', product.quantity)
+
+          toast.success('Product updated!', {
+            hideProgressBar: true,
+            autoClose: 1000,
+            pauseOnHover: false
+          })
+        } else {
+          cartItems.push(product)
+
+          toast.success('Product added!', {
+            hideProgressBar: true,
+            autoClose: 1000,
+            pauseOnHover: false
+          })
+        }
+
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+      } catch (e) {
+        localStorage.removeItem('cartItems')
+      }
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

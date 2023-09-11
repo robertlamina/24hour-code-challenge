@@ -1,40 +1,25 @@
 <template>
 	<div class="cart__widget" :class="{ 'is-visible' : isVisible }">
     <ul>
-      <li>
+      <li v-for="item in cartItems">
         <div class="cart__widget__product">
           <div class="cart__widget__product__img">
-            <img :src="`/images/products/product-img-1.jpg`" alt="product-img">
+            <img :src="`/images/products/${item.image}`" alt="product-img">
           </div>
           <div class="cart__widget__product__info">
-            <h3 class="cart__widget__product__title">test</h3>
-            <span class="cart__widget__product__description">test</span>
-            <span class="cart__widget__product__size">Size: test</span>
-            <span class="cart__widget__product__color">Color: test</span>
-            <span class="cart__widget__product__quantity">Qty: test</span>
-            <span class="cart__widget__product__price">test</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="cart__widget__product">
-          <div class="cart__widget__product__img">
-            <img :src="`/images/products/product-img-1.jpg`" alt="product-img">
-          </div>
-          <div class="cart__widget__product__info">
-            <h3 class="cart__widget__product__title">test</h3>
-            <span class="cart__widget__product__description">test</span>
-            <span class="cart__widget__product__size">Size: test</span>
-            <span class="cart__widget__product__color">Color: test</span>
-            <span class="cart__widget__product__quantity">Qty: test</span>
-            <span class="cart__widget__product__price">test</span>
+            <h3 class="cart__widget__product__title">{{ item.name }}</h3>
+<!--            <span class="cart__widget__product__description">test</span>-->
+            <span class="cart__widget__product__size">Size: {{ item.size }}</span>
+            <span class="cart__widget__product__color">Color: {{ item.color }}</span>
+            <span class="cart__widget__product__quantity">Qty: {{ item.quantity }}</span>
+            <span class="cart__widget__product__price">${{ calculateSubTotal(item.price, item.quantity) }}</span>
           </div>
         </div>
       </li>
     </ul>
     <div class="cart__widget__footer">
       <div class="cart_widget__total">
-        <a href="/carts">My Bag (2)</a>
+        <a href="/carts">My Bag ({{ totalItems() }})</a>
         <span class="total">$99</span>
       </div>
 			<Button variant="btn__checkout">Begin Checkout</Button>
@@ -43,16 +28,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
+import {defineComponent} from 'vue'
+interface SubtotalProps {
+  price: number,
+  quantity: number
+}
 export default defineComponent({
   props: {
 		isVisible: Boolean
   },
-	async created() {
+  data() {
+    return {
+      cartItems: []
+    }
   },
   methods: {
+		calculateSubTotal(price: SubtotalProps, quantity: SubtotalProps) {
+      return Number(price) * Number(quantity)
+    },
+    totalItems() {
+      let totalItems = 0
 
+      this.$_.forEach(this.cartItems, (item) => {
+        totalItems = Number(totalItems) + Number(item.quantity)
+      })
+
+      return totalItems
+    }
+  },
+  watch: {
+    isVisible: function() {
+			this.cartItems = localStorage.hasOwnProperty('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+    }
   }
 })
 </script>
@@ -100,7 +107,7 @@ export default defineComponent({
           }
 
           .cart__widget__product__title, .cart__widget__product__price {
-            @apply font-semibold;
+            @apply font-semibold max-w-[300px];
           }
         }
       }

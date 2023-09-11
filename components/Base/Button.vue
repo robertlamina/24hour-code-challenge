@@ -27,7 +27,7 @@ export default {
   }
 
   &.btn__checkout {
-    @apply bg-black;
+    @apply w-full bg-black;
     @apply px-[20px] py-[20px];
     @apply font-normal text-[14px] text-white uppercase;
   }

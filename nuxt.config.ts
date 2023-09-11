@@ -13,7 +13,9 @@ export default defineNuxtConfig({
   ],
   modules: [
     '@nuxtjs/tailwindcss',
-    'nuxt-icon'
+    'nuxt-icon',
+    'nuxt-lodash',
+    '@tailvue/nuxt'
   ],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
