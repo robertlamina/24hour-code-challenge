@@ -20,7 +20,7 @@
     <div class="cart__widget__footer">
       <div class="cart_widget__total">
         <a href="/carts">My Bag ({{ totalItems() }})</a>
-        <span class="total">$99</span>
+        <span class="total">${{ subtotal }}</span>
       </div>
 			<Button variant="btn__checkout" @click="navigateTo('/carts')">Begin Checkout</Button>
     </div>
@@ -36,12 +36,14 @@ export default defineComponent({
   },
   data() {
     return {
-      cartItems: []
+      cartItems: [],
+      subtotal: 0
     }
   },
   watch: {
     isVisible: function() {
 			this.getCartItems()
+      this.getSubtotal()
     }
   }
 })

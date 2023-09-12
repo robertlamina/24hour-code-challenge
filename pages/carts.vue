@@ -92,7 +92,7 @@ export default defineComponent({
   data() {
     return {
       cartItems: [],
-      subtotal: 0,
+      subtotal: 0
     }
   },
   mounted() {
@@ -100,14 +100,11 @@ export default defineComponent({
     this.getSubtotal()
   },
   methods: {
-		getSubtotal() {
-      this.$_.forEach(this.cartItems, (item) => {
-        this.subtotal = Number(this.subtotal) + Number(item.quantity) * Number(item.price)
-      })
-    },
     removeProduct({index}: { index: number }) {
 			this.cartItems.splice(index, 1)
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems))
+
+      this.getSubtotal()
 
       toast.success('Product remove!', {
         hideProgressBar: true,
