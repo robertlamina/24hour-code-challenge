@@ -49,5 +49,21 @@ export default {
     @apply p-0;
     @apply flex items-center justify-center;
   }
+
+  &.is__rounded {
+    @apply rounded-[8px];
+  }
+
+  &.btn__paypal {
+    @apply w-full;
+    @apply flex items-center justify-center;
+    @apply rounded-[8px];
+    @apply font-normal text-[14px] capitalize;
+    @apply border-[1px] border-black;
+  }
+
+  &.btn__remove {
+    @apply p-0;
+  }
 }
 </style>

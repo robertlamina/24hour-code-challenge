@@ -22,17 +22,14 @@
         <a href="/carts">My Bag ({{ totalItems() }})</a>
         <span class="total">$99</span>
       </div>
-			<Button variant="btn__checkout">Begin Checkout</Button>
+			<Button variant="btn__checkout" @click="navigateTo('/carts')">Begin Checkout</Button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-interface SubtotalProps {
-  price: number,
-  quantity: number
-}
+
 export default defineComponent({
   props: {
 		isVisible: Boolean
@@ -42,23 +39,9 @@ export default defineComponent({
       cartItems: []
     }
   },
-  methods: {
-		calculateSubTotal(price: SubtotalProps, quantity: SubtotalProps) {
-      return Number(price) * Number(quantity)
-    },
-    totalItems() {
-      let totalItems = 0
-
-      this.$_.forEach(this.cartItems, (item) => {
-        totalItems = Number(totalItems) + Number(item.quantity)
-      })
-
-      return totalItems
-    }
-  },
   watch: {
     isVisible: function() {
-			this.cartItems = localStorage.hasOwnProperty('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+			this.getCartItems()
     }
   }
 })
@@ -85,7 +68,7 @@ export default defineComponent({
         .cart__widget__product__img {
           img {
             @apply w-[80px] h-[100px];
-            @apply object-fill object-center;
+            @apply object-cover object-center;
           }
         }
 
